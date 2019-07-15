@@ -26,7 +26,7 @@ public class Reclutamiento {
 		int menorBloqueo = listaAbejas.get(0).getContadorBloqueo();
 		
 		for(Abeja ab:listaAbejas) {
-			System.out.println("lista abejas ordenadas:"+ ab);
+		//	System.out.println("lista abejas ordenadas:"+ ab);
 		}
 		
 		ArrayList<Abeja> respuesta = new ArrayList<Abeja>();
@@ -54,7 +54,7 @@ public class Reclutamiento {
 
 		for(Abeja ab:seguidoras) {
 
-			System.out.println("lista de abejas seguidoras:"+ ab + "tamaño:"+ ab.getDemandas().size());
+		//	System.out.println("lista de abejas seguidoras:"+ ab + "tamaño:"+ ab.getDemandas().size());
 		}
 		System.out.println();
 
@@ -79,7 +79,7 @@ public class Reclutamiento {
 
 		for(Abeja ab:reclutadoraspb) {
 
-			System.out.println("lista de abejas reclutadoras:"+ ab + "tamaño:"+ ab.getDemandas().size());
+		//	System.out.println("lista de abejas reclutadoras:"+ ab + "tamaño:"+ ab.getDemandas().size());
 		}
 		//	System.out.println();
 
@@ -169,7 +169,7 @@ public class Reclutamiento {
 
 			int random = (int) (Math.random() * 1);
 			
-			System.out.println("numero randomico para cambiar o no:" + random);
+		//	System.out.println("numero randomico para cambiar o no:" + random);
 			if (random == 1) {
 				BuscarSlot r = new BuscarSlot(seguidora.getG(), reclutadora.getDemandas().get(i).getCaminoElegido());
 				resultadoSlot res = r.concatenarCaminos(reclutadora.getDemandas().get(i).getFs(), 1);

@@ -23,17 +23,55 @@ public class Aplicacion {
 		leerArchivoCaminos();
 
 		// Matriz que representa la red igual al archivo test_16 que se va a utilar al tener los caminos.
-		int[] vertices = {0, 1, 2, 3, 4, 5};
+		int[] vertices = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24};
 		GrafoMatriz g = new GrafoMatriz(vertices);
 		g.InicializarGrafo(g.grafo);
-		g.agregarRuta(0, 1, 1, 4);
-		g.agregarRuta(1, 5, 1, 4);
-		g.agregarRuta(1, 3, 1, 4);
-		g.agregarRuta(1, 2, 1, 4);
-		g.agregarRuta(2, 3, 1, 4);
-		g.agregarRuta(2, 4, 1, 4);
-		g.agregarRuta(3, 5, 1, 4);
-		g.agregarRuta(4, 5, 1, 4);
+
+		g.agregarRuta(0, 1, 1, 3, 60);
+		g.agregarRuta(2, 6, 1, 3, 60);
+		g.agregarRuta(2, 8, 1, 3, 60);
+		g.agregarRuta(2, 9, 1, 3, 60);
+		g.agregarRuta(4, 3, 1, 3, 60);
+		g.agregarRuta(5, 3, 1, 3, 60);
+		g.agregarRuta(5, 4, 1, 3, 60);
+		g.agregarRuta(5, 6, 1, 3, 60);
+		g.agregarRuta(5, 7, 1, 3, 60);
+		g.agregarRuta(7, 6, 1, 3, 60);
+		g.agregarRuta(7, 8, 1, 3, 60);
+		g.agregarRuta(9, 11, 1, 3, 60);
+		g.agregarRuta(10, 9, 1, 3, 60);
+		g.agregarRuta(10, 11, 1, 3, 60);
+		g.agregarRuta(12, 13, 1, 3, 60);
+		g.agregarRuta(14, 8, 1, 3, 60);
+		g.agregarRuta(14, 10, 1, 3, 60);
+		g.agregarRuta(14, 12, 1, 3, 60);
+		g.agregarRuta(14, 13, 1, 3, 60);
+		g.agregarRuta(14, 15, 1, 3, 60);
+		g.agregarRuta(14, 17, 1, 3, 60);
+		g.agregarRuta(14, 19, 1, 3, 60);
+		g.agregarRuta(14, 20, 1, 3, 60);
+		g.agregarRuta(14, 21, 1, 3, 60);
+		g.agregarRuta(14, 24, 1, 3, 60);
+		g.agregarRuta(15, 8, 1, 3, 60);
+		g.agregarRuta(15, 9, 1, 3, 60);
+		g.agregarRuta(15, 10, 1, 3, 60);
+		g.agregarRuta(15, 11, 1, 3, 60);
+		g.agregarRuta(16, 9, 1, 3, 60);
+		g.agregarRuta(16, 15, 1, 3, 60);
+		g.agregarRuta(17, 18, 1, 3, 60);
+		g.agregarRuta(19, 18, 1, 3, 60);
+		g.agregarRuta(19, 20, 1, 3, 60);
+		g.agregarRuta(19, 23, 1, 3, 60);
+		g.agregarRuta(21, 8, 1, 3, 60);
+		g.agregarRuta(21, 19, 1, 3, 60);
+		g.agregarRuta(21, 22, 1, 3, 60);
+		g.agregarRuta(21, 23, 1, 3, 60);
+		g.agregarRuta(23, 22, 1, 3, 60);
+		g.agregarRuta(24, 0, 1, 3, 60);
+		g.agregarRuta(24, 1, 1, 3, 60);
+		g.agregarRuta(24, 2, 1, 3, 60);
+		g.agregarRuta(24, 3, 1, 3, 60);
+		g.agregarRuta(24, 8, 1, 3, 60);
 
 		//  int inicio = 1;
 		// int fin    = 5;
@@ -71,10 +109,14 @@ public class Aplicacion {
 			solicitud.setOrigen(Integer.parseInt(str_list[0]));
 			//	System.out.println("origen:" + str_list[0]);
 			solicitud.setDestino(Integer.parseInt(str_list[1]));
-			//	System.out.println(str_list[1]);
-			solicitud.setFs(Integer.parseInt(str_list[2]));
+			//	System.out.println("destino:" +str_list[1]);
+			int calAux = Integer.parseInt(str_list[2]);
+			double doubleAux = Integer.parseInt(str_list[2]);
+			doubleAux = Math.ceil(calAux/10);
+			calAux = (int) Math.ceil(doubleAux / 12);
+			solicitud.setFs(calAux);
 			solicitud.setId(IdDemanda);
-			//	System.out.println(str_list[2]);
+			System.out.println("fs:" + calAux);
 			solicitudes.add(solicitud);
 
 			IdDemanda++;
@@ -131,7 +173,7 @@ public class Aplicacion {
 		 */
 		Abeja resultadoFinal = new Abeja();
 		ArrayList<String> caminoInicial = new ArrayList<String>();
-		for(int z = 0; z < 2; z++) {
+		for(int z = 0; z < 1; z++) {
 
 			ArrayList<Abeja> listaNuevasAbejas = new ArrayList();
 
@@ -205,7 +247,7 @@ public class Aplicacion {
 						if(a == 0 && z != 0 && caminoInicial.get(i) != null) {
 							camino = caminoInicial.get(i) + ":" + (caminoInicial.get(i).length()-1) + ".0";
 							listaCaminos = camino + ";" + listaCaminos;
-							System.out.println("lista de caminos ciclo" + listaCaminos);
+						//	System.out.println("lista de caminos ciclo" + listaCaminos);
 						}
 						BuscarSlot r = new BuscarSlot(abe.getG(), listaCaminos);
 						resultadoSlot res = r.concatenarCaminos(fs, a);
@@ -259,7 +301,7 @@ public class Aplicacion {
 				ArrayList<Abeja> abejaslistpb = tabla.valorespb(abejaslist);
 
 				for(Abeja ab:abejaslistpb) {
-					System.out.println("lista abejas para trabajar:"+ ab);
+				//	System.out.println("lista abejas para trabajar:"+ ab);
 				}
 
 				System.out.println();
@@ -268,7 +310,7 @@ public class Aplicacion {
 				//	System.out.println("numero aleatorio:" + numeroAleatorio);
 				float numeroAleatorio2 = (float)numeroAleatorio / 10;
 			//	numeroAleatorio2 = 0.97f;
-					System.out.println("numero aleatorio:" + numeroAleatorio2);
+				//	System.out.println("numero aleatorio:" + numeroAleatorio2);
 
 				Reclutamiento reclutas = new Reclutamiento(abejaslistpb, numeroAleatorio2, pasofinal);
 				listaNuevasAbejas = reclutas.reclutarAbejas();
@@ -276,7 +318,7 @@ public class Aplicacion {
 
 				for(Abeja ab:listaNuevasAbejas) {
 
-					System.out.println("lista abejas mutadas"+ ab);
+				//	System.out.println("lista abejas mutadas"+ ab);
 				}
 
 				pasoinicio = pasofinal;
@@ -298,7 +340,7 @@ public class Aplicacion {
 				auxCamino.add(nuevaPoblacion.getDemandas().get(l).getCaminoElegido());
 			}
 			for (int l = 0; l < nuevaPoblacion.getDemandas().size(); l++) {
-				System.out.println("camino inicial:" + auxCamino.get(l));
+			//	System.out.println("camino inicial:" + auxCamino.get(l));
 			}
 			caminoInicial = auxCamino;
 			//	solicitudes = aux;
@@ -326,27 +368,30 @@ public class Aplicacion {
 			variables[2] = variables[2].replace(", [", ";[");
 			variables[2] = variables[2].replace("[", "");
 			variables[2] = variables[2].replace("]", "");
-			variables[2] = variables[2].replace(", ", "");
+			variables[2] = variables[2].replace(", ", ",");
 			caminos.add(variables);
 			linea = bufRead.readLine();
 		}
-	}
+}
 
 	private static void crearArchivoCaminos() throws IOException {
 		YenTopKShortestPathsAlg yenAlg = new YenTopKShortestPathsAlg(graph);
 		PrintWriter writer = new PrintWriter("data/Kcaminos", "UTF-8");
 
 		// en este for hay que poner la cantidad de vertices que tenemos
-		for (int i = 0; i <= 5; i++) {
-			for (int k = 0; k <= 5; k++) {
+		for (int i = 0; i <= 24; i++) {
+			for (int k = 0; k <= 24; k++) {
 				if (i != k) {
 					List<Path> shortest_paths_list = yenAlg.get_shortest_paths(graph.get_vertex(i), graph.get_vertex(k), 4);
+				//	List<Path> shortest_paths_list2 = yenAlg.get_shortest_paths(graph.get_vertex(k), graph.get_vertex(i), 4);
 					writer.println(i + "-" + k + "-" + shortest_paths_list.toString());
+				//	writer.println(k + "-" + i + "-" + shortest_paths_list2.toString());
+
 				}
 			}
 		}
 		writer.close();
-	}
+}
 
 	public static List<Request> marcarCamino(List<Request> demanda, ArrayList<Idrequest> resp) {
 		List<Request> DemandasNuevas = new ArrayList<Request>();
@@ -364,7 +409,7 @@ public class Aplicacion {
 			auxiliar.setId(id);
 			DemandasNuevas.add(auxiliar);
 		}
-		System.out.println("demandas nuevassssss"+ DemandasNuevas);
+	//	System.out.println("demandas nuevassssss"+ DemandasNuevas);
 		return DemandasNuevas;
 	}
 

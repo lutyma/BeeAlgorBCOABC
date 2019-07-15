@@ -55,17 +55,21 @@ public class BuscarSlot {
 				String[] caminos;
 				caminos = cam.split(":");
 				cam = caminos[0];
-				System.out.println(cam);
+				System.out.println("cam" +cam);
 				respuesta.camino = cam;
+				String[] caminosLista;
+				caminosLista = cam.split(",");
+				
 
 				//	GrafoMatriz posicion = new GrafoMatriz(g.cadenaVertices);
 
 				//se concatena los vectores de los fs de cada enlace del primer camino examinado 
-				for (int i=0; i < cam.length()-1; i++) {
+				for (int i=0; i < caminosLista.length-1; i++) {
 
-					int k = (int) cam.charAt(i) - 48;
-					int l = (int) cam.charAt(i+1) - 48;
-
+					int k = Integer.parseInt(caminosLista[i]);
+					System.out.println("primer digito" + k);
+					int l = Integer.parseInt(caminosLista[i+1]);
+					System.out.println("segundo digito" + l);
 					int n1 = g.posicionNodo(k);
 					int n2 = g.posicionNodo(l);
 
