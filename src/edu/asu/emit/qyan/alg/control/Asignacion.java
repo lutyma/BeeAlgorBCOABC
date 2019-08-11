@@ -66,10 +66,10 @@ public class Asignacion {
        //     System.out.println("######");
             for (int x = 0; x < g.grafo[0][0].listafs.length; x++) {
 
-           // 	 System.out.println("###### hola ###########");
-           //    System.out.println("grafo de la abeja en cuestion :" + g.grafo[p][m].listafs[x].libreOcupado);
+            //	 System.out.println("###### hola ###########");
+              System.out.println("grafo de la abeja en cuestion :" + g.grafo[p][m].listafs[x].libreOcupado);
             }
-          //  System.out.println("######");
+         //   System.out.println("######");
         }
 
 

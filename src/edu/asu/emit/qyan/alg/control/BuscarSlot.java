@@ -51,7 +51,7 @@ public class BuscarSlot {
 				} else {
 					cam = listaCaminos[random];
 				}
-
+                System.out.println("camino original " + cam);
 				String[] caminos;
 				caminos = cam.split(":");
 				cam = caminos[0];

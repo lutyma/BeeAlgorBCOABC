@@ -114,6 +114,7 @@ public class Aplicacion {
 			double doubleAux = Integer.parseInt(str_list[2]);
 			doubleAux = Math.ceil(calAux/10);
 			calAux = (int) Math.ceil(doubleAux / 12);
+			System.out.println("fsfsfsfsfs;" + calAux);
 			solicitud.setFs(calAux);
 			solicitud.setId(IdDemanda);
 			System.out.println("fs:" + calAux);
@@ -173,7 +174,7 @@ public class Aplicacion {
 		 */
 		Abeja resultadoFinal = new Abeja();
 		ArrayList<String> caminoInicial = new ArrayList<String>();
-		for(int z = 0; z < 1; z++) {
+		for(int z = 0; z < 2; z++) {
 
 			ArrayList<Abeja> listaNuevasAbejas = new ArrayList();
 
@@ -188,7 +189,7 @@ public class Aplicacion {
 
 			// una vez ordenado la solicitud de entrada se le asigna a la primera abeja.
 			// luego se realiza un reordenamiento y se le asigna a las demás abejas.
-			int nroAbeja = 5;
+			int nroAbeja = 10;
 			AsignacionDemanda asig = new AsignacionDemanda(solicitudes, nroAbeja, g); 
 			List<Abeja> listaAbejas = asig.asignacionAbeja();
 
@@ -246,7 +247,9 @@ public class Aplicacion {
 						}
 						if(a == 0 && z != 0 && caminoInicial.get(i) != null) {
 							camino = caminoInicial.get(i) + ":" + (caminoInicial.get(i).length()-1) + ".0";
+							System.out.println("caminoinicial: " + camino);
 							listaCaminos = camino + ";" + listaCaminos;
+							System.out.println("kfkfkfkf: " + listaCaminos);
 						//	System.out.println("lista de caminos ciclo" + listaCaminos);
 						}
 						BuscarSlot r = new BuscarSlot(abe.getG(), listaCaminos);
@@ -254,8 +257,8 @@ public class Aplicacion {
 						if (res !=null) {
 							//		System.out.println(res.toString());
 							System.out.println("######"+ res);
-							Desasignar desasignar = new Desasignar(abe.getG());
-							desasignar.restarTiempo();
+						//	Desasignar desasignar = new Desasignar(abe.getG());
+						//	desasignar.restarTiempo();
 							Asignacion asignar = new Asignacion(abe.getG(), res);
 							asignar.marcarSlotUtilizados(abe.getDemandas().get(i).getId());
 							Idrequest identificador = new Idrequest(i, res.getCamino());
@@ -301,7 +304,7 @@ public class Aplicacion {
 				ArrayList<Abeja> abejaslistpb = tabla.valorespb(abejaslist);
 
 				for(Abeja ab:abejaslistpb) {
-				//	System.out.println("lista abejas para trabajar:"+ ab);
+					System.out.println("lista abejas para trabajar:"+ ab);
 				}
 
 				System.out.println();
@@ -309,7 +312,7 @@ public class Aplicacion {
 				int numeroAleatorio = (int) (Math.random() * 9) + 1;
 				//	System.out.println("numero aleatorio:" + numeroAleatorio);
 				float numeroAleatorio2 = (float)numeroAleatorio / 10;
-			//	numeroAleatorio2 = 0.97f;
+				numeroAleatorio2 = 0.5f;
 				//	System.out.println("numero aleatorio:" + numeroAleatorio2);
 
 				Reclutamiento reclutas = new Reclutamiento(abejaslistpb, numeroAleatorio2, pasofinal);
@@ -318,8 +321,8 @@ public class Aplicacion {
 
 				for(Abeja ab:listaNuevasAbejas) {
 
-				//	System.out.println("lista abejas mutadas"+ ab);
-				}
+					System.out.println("lista abejas mutadas"+ ab);
+			}
 
 				pasoinicio = pasofinal;
 				pasofinal = pasofinal + divpasos;
@@ -334,7 +337,7 @@ public class Aplicacion {
 					auxiliar = listaNuevasAbejas.get(k).getFuncionObjetivo();
 				}
 			}
-
+			System.out.println("La mejor opción primera: " + nuevaPoblacion);
 			for (int l = 0; l < nuevaPoblacion.getDemandas().size(); l++) {
 				//		aux.add(nuevaPoblacion.getDemandas().get(l));
 				auxCamino.add(nuevaPoblacion.getDemandas().get(l).getCaminoElegido());
@@ -351,6 +354,7 @@ public class Aplicacion {
 
 		System.out.println("#############");
 		System.out.println("Cantidad de conexiones entrantes :" + contlineatxt);
+		
 	//	System.out.println("Cantidad de conexiones fallidas :" + cont);
 
 		System.out.println("La mejor opción la tiene la abeja: " + resultadoFinal);
